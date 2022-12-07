@@ -97,3 +97,36 @@ class Game:
             sound = pygame.mixer.Sound("resources/ding.mp3")
 
         pygame.mixer.Sound.play(sound)
+
+    def reset(self):
+        self.snake = Snake(self.surface)
+        self.apple = Apple(self.surface)
+
+    def is_collision(self, x1, y1, x2, y2):
+        if x1 >= x2 and x1 < x2 + SIZE:
+            if y1 >= y2 and y1 < y2 + SIZE:
+                return True
+        return False
+
+    def render_background(self):
+        bg = pygame.image.load("resources/background.jpg")
+        self.surface.blit(bg, (0,0))
+
+    def play(self):
+        self.render_background()
+        self.snake.walk()
+        self.apple.draw()
+        self.display_score()
+        pygame.display.flip()
+
+        # snake eating apple scenario
+        if self.is_collision(self.snake.x[0], self.snake.y[0], self.apple.x, self.apple.y):
+            self.play_sound("ding")
+            self.snake.increase_length()
+            self.apple.move()
+
+        # snake colliding with itself
+        for i in range(3, self.snake.length):
+            if self.is_collision(self.snake.x[0], self.snake.y[0], self.snake.x[i], self.snake.y[i]):
+                self.play_sound('crash')
+                raise "Collision Occurred"
