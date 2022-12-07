@@ -1,13 +1,11 @@
-# "Adventure of Zig"
+# "Snake Game"
 
-It is An Rpg Game Titled Adventure of Zig in Python. This is used for A final Project for a Course CS - 121 Advance Computer Programming.
+It is a Small GUI Game Titled Snake Game in Python. This is used for A final Project for a Course CS - 121 Advance Computer Programming.
 
 ## Features:
 
-- Arrow Keys: Used for movement
-- Space Key: Used for Attack
-- Q and E Key: Used to change Weapon and Power
-- Ctrl Key: Used for Power
+- Arrow Keys: Movement
+- Enter Key: This Key will be Used when the Game is Over to Start new Game
 
 ## Authors
 
